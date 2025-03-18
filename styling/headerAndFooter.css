@@ -1,0 +1,124 @@
+
+/* Header content  */
+
+.logoWrapper{
+  display:flex;
+  align-items: center;
+  flex:4;
+  margin-left:50px;
+}
+
+
+.logoText{
+  padding:5px;
+  text-align: center;
+  color:rgb(93, 120, 120);
+  font-weight: bold;
+  font-size: 13px;
+  margin-left:6px;
+}
+
+.logoText p{
+  margin:0;
+}
+
+
+#slogan{
+  font-size: 10px;
+}
+
+#logo{
+  border-color: 1px black;
+}
+
+
+.searchBar{
+
+  border: bold;
+  border-radius:8px;
+  padding:7px;
+  margin-right:20px;
+  background-color: white;
+
+}
+
+#logo :active{
+  border: dashed;
+}
+
+
+header{
+  display:flex;
+  flex-direction: row;
+  background-color: beige;
+  padding:30px;
+  align-items: center;
+}
+
+
+.navBar ul{
+
+  justify-content:center;
+  display:flex;
+  list-style-type: none;
+  background-color: rgb(40, 71, 115);
+  text-decoration: none;
+  color: white;
+  padding:0;
+  margin:0;
+  font-weight: bold;
+  overflow: hidden;
+  transition:0.9s;
+  }
+  
+  .navBar a{
+    text-decoration: none;
+    color:white;
+    display: block;
+    padding:26px;
+  
+  }
+  
+  
+  .navBar li :hover{
+ color: rgb(40, 71, 115);
+ background-color: white;
+
+  }
+
+
+  /* Footer Content  */
+
+
+  #copyRight{
+ 
+    padding:30px;
+    flex:4;
+    margin-left:100px;
+  
+  }
+
+  .footerItems{
+    display:flex;
+    justify-content: center;
+    background-color:rgb(40, 71, 115);
+    color:azure;
+    flex-direction:row;
+    padding:12px;
+    align-items: center;
+  }
+
+  .emails{
+    flex-direction:row;
+    display:flex;
+    margin-right:60px;
+  
+  }
+  
+  .emails a{
+    margin-right:60px;
+    color:azure;
+  
+  }
+  
+  
