@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">  
-  <link rel="stylesheet" href="styling/headerAndFooter.css">
-  <link rel="stylesheet" href="styling/style.css">
+  <link rel="stylesheet" href="styling\headerAndFooter.css">
+  <link rel="stylesheet" href="styling\style.css">
   <link rel ="icon" href="images/landlordProLogo.png" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page | LandlordPro Properties</title>
+  <title> [Insert Here] | LandlordPro Properties</title>
 </head>
 <body>
 
-  <header>
+<header>
     <div class="logoWrapper">
 
       <a href="index.php" id="logo">
@@ -30,6 +30,7 @@
 
 
 
+
 <nav class="navBar">
   <ul>
     <li><a href="logIn.php">LOG IN |</a></li>
@@ -41,31 +42,13 @@
   </ul>
 </nav>
 
-<main>
-
 <div class="title">
-      <h1>Welcome To LandlordPro Properties</h1>
+      <h1>Investments</h1>
 </div>
     
-<div>
-<p id="landlordOrTenant" >What type of service are you looking for?</p>
-</div>
+<main>
 
-<div class="mainContent">
 
-<a href="logIn.php">
-<p>LandLord</p>
-</a>
-
-<a href="logIn.php">
-<p>Tenant</p>
-</a>
-</div>
-
-<div class="dontHaveAnAccount">
-<a>Dont have an account?</a>
-<a href="signUp.php" id="createAccountTxt" > Create an account</a>
-</div>
 
 </main>
 
@@ -84,6 +67,6 @@
     </div>
   </footer>
 
-
 </body>
+
 </html>
