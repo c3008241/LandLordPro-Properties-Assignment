@@ -28,9 +28,6 @@
     </div>
   </header>
 
-
-
-
 <nav class="navBar">
   <ul>
     <li><a href="logIn.php">LOG IN |</a></li>

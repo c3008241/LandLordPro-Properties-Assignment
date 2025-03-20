@@ -44,6 +44,7 @@ session_start();
     <li><a href="signUp.php">SIGN UP |</a></li>
     <li><a href="properties.php">PROPERTIES |</a></li>
     <li><a href="invest.php">INVEST |</a></li>
+    <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
     <li><a href="contactUs.php">CONTACT US</a></li>
   </ul>
 </nav>
