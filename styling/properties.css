@@ -1,0 +1,75 @@
+
+.properties-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .property-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    padding: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .property-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .property-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #2c3e50;
+  }
+  
+  .property-card p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .filters {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filters label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .filters select, .filters input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .filters button {
+    padding: 8px 15px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filters button:hover {
+    background-color: #16a085;
+  }
