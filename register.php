@@ -22,7 +22,9 @@ if(isset($_POST['signUp'])){
   $sql = "INSERT INTO userInfo (fullName, email, password) 
       VALUES ('$fullName', '$email', '$password')";
   if($conn->query($sql) === TRUE){
-    echo "New record created successfully";
+    header("Location: logIn.php");
+    echo "<script>alert('New record created successfully');</script>";
+
   }else{
     echo "Error: " . $conn->error;
     

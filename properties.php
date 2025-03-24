@@ -78,40 +78,7 @@ session_start();
     </div>
 
     <div class="properties-container">
-      <?php
-      $location = isset($_GET['location']) ? $_GET['location'] : '';
-      $price = isset($_GET['price']) ? $_GET['price'] : '';
-      $bedrooms = isset($_GET['bedrooms']) ? $_GET['bedrooms'] : '';
-
-      $query = "SELECT * FROM properties WHERE 1=1";
-      if (!empty($location)) {
-        $query .= " AND location = '$location'";
-      }
-      if (!empty($price)) {
-        list($minPrice, $maxPrice) = explode('-', $price);
-        $query .= " AND price BETWEEN $minPrice AND $maxPrice";
-      }
-      if (!empty($bedrooms)) {
-        $query .= " AND bedrooms >= $bedrooms";
-      }
-
-      $result = mysqli_query($conn, $query);
-
-      if ($result && mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-          echo '
-          <div class="property-card">
-            <img src="' . $row['image_url'] . '" alt="' . $row['title'] . '">
-            <h3>' . $row['title'] . '</h3>
-            <p><strong>Location:</strong> ' . $row['location'] . '</p>
-            <p><strong>Price:</strong> £' . $row['price'] . '</p>
-            <p><strong>Bedrooms:</strong> ' . $row['bedrooms'] . '</p>
-          </div>';
-        }
-      } else {
-        echo '<p>No properties found.</p>';
-      }
-      ?>
+      
     </div>
   </main>
 
