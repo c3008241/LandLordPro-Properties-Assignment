@@ -9,7 +9,7 @@ session_start();
   <meta charset="UTF-8">  
   <link rel="stylesheet" href="styling/headerAndFooter.css">
   <link rel="stylesheet" href="styling/style.css">
-  <link rel="stylesheet" href="styling/properties.css">
+  <link rel="stylesheet" href="properties.css">
   <link rel="icon" href="images/landlordProLogo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Properties | LandlordPro Properties</title>
@@ -46,35 +46,35 @@ session_start();
   </div>
 
   <main>
-    <div class="filters">
-      <form method="GET" action="properties.php">
-        <label for="location">Location:</label>
-        <select id="location" name="location">
-          <option value="">Any</option>
-          <option value="Sheffield">Sheffield</option>
-          <option value="Manchester">Manchester</option>
-          <option value="Leeds">Leeds</option>
-          <option value="London">London</option>
-        </select>
+  <form id="propertyFilters" action="filterProperties.php" method="GET">
 
-        <label for="price">Price Range:</label>
-        <select id="price" name="price">
-          <option value="">Any</option>
-          <option value="0-500">£0 - £500</option>
-          <option value="500-1000">£500 - £1000</option>
-          <option value="1000-2000">£1000 - £2000</option>
-        </select>
+    <select name="location">
+        <option value="Any">Any Location</option>
+        <option value="Sheffield">Sheffield</option>
+        <option value="Leeds">Leeds</option>
+        <option value="London">London</option>
+        <option value="Manchester">Manchester</option>
+    </select>
 
-        <label for="bedrooms">Bedrooms:</label>
-        <select id="bedrooms" name="bedrooms">
-          <option value="">Any</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3+</option>
-        </select>
+    <select name="price">
+        <option value="Any">Any Price</option>
+        <option value="0-500">£0 - £500</option>
+        <option value="500-1000">£500 - £1000</option>
+        <option value="1000-2000">£1000 - £2000</option>
+    </select>
 
-        <button type="submit">Apply Filters</button>
-      </form>
+    <select name="bedrooms">
+        <option value="Any">Any Bedrooms</option>
+        <option value="1">1 Bedroom</option>
+        <option value="2">2 Bedrooms</option>
+        <option value="3">3+ Bedrooms</option>
+    </select>
+
+    <button type="submit">Search Properties</button>
+</form>
+
+<div id="propertyResults">
+</div>
     </div>
 
     <div class="properties-container">
@@ -98,5 +98,37 @@ session_start();
     document.getElementById("currentYear").textContent = new Date().getFullYear();
   </script>
 
+<script>
+  
+document.getElementById('propertyFilters').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    const location = this.querySelector('[name="location"]').value;
+    const price = this.querySelector('[name="price"]').value;
+    const bedrooms = this.querySelector('[name="bedrooms"]').value;
+    
+    fetch(`filter-properties.php?location=${location}&price=${price}&bedrooms=${bedrooms}`)
+        .then(response => {
+            if (!response.ok) throw new Error("Network error");
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('propertyResults').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('propertyResults').innerHTML = 
+                '<p class="error">Error loading properties. Please try again.</p>';
+        });
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+    fetch('filter-properties.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('propertyResults').innerHTML = data;
+        });
+});
+</script>
 </body>
 </html>
