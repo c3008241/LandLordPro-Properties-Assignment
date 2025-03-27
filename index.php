@@ -74,7 +74,6 @@
     
     <div class="footer-links">
       <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
-      <a href="mailto:contact@smartpay.com" class="footer-link">contact@smartpay.com</a>
       <a href="/privacy" class="footer-link">Privacy</a>
       <a href="/terms" class="footer-link">Terms</a>
     </div>
