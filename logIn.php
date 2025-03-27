@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">  
   <link rel="stylesheet" href="styling\headerAndFooter.css">
-  <link rel="stylesheet" href="styling\style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel ="icon" href="images/landlordProLogo.png" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Log In | LandlordPro Properties</title>
@@ -36,7 +36,6 @@
     <li><a href="logIn.php">LOG IN |</a></li>
     <li><a href="signUp.php">SIGN UP |</a></li>
     <li><a href="properties.php">PROPERTIES |</a></li>
-    <li><a href="invest.php">INVEST |</a></li>
     <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
     <li><a href="contactUs.php">CONTACT US</a></li>
   </ul>
@@ -73,19 +72,18 @@
 </main>
 
 
-<footer>
-    <div class="footerItems">
-      <div id="copyRight">
-      Copyright &#169; 
-      </div>
-
-
-      <div class="emails">
-       <a href="">info@smartpay.com</a>
-       <a href="">contact@smartpay.com</a>
-      </div>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> SmartPay</p>
+    
+    <div class="footer-links">
+      <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
+      <a href="mailto:contact@smartpay.com" class="footer-link">contact@smartpay.com</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+      <a href="/terms" class="footer-link">Terms</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 
