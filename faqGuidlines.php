@@ -3,14 +3,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">  
-  <link rel="stylesheet" href="styling\headerAndFooter.css">
-  <link rel="stylesheet" href="styling\style.css">
-  <link rel ="icon" href="images/landlordProLogo.png" >
+  <link rel="stylesheet" href="styling/headerAndFooter.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/landlordProLogo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> [Insert Here] | LandlordPro Properties</title>
+  <title>FAQ Summary | LandlordPro Properties</title>
+  <style>
+   
+    .faq-section {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: #1abc9c;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-item summary {
+      font-weight: bold;
+      cursor: pointer;
+      color: #2c3e50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::after {
+      content: "▼";
+      font-size: 0.8em;
+      color: #1abc9c;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .faq-item ul {
+      margin-left: 20px;
+      color: #555;
+      padding-left: 15px;
+    }
+
+    .faq-item ul li {
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
-
+  
 <header>
     <div class="logoWrapper">
 
@@ -29,15 +90,12 @@
     </div>
   </header>
 
-
-
-
 <nav class="navBar">
   <ul>
-    <li><a href="logIn.php">LOG IN |</a></li>
+  <li><a href="logIn.php">LOG IN |</a></li>
     <li><a href="signUp.php">SIGN UP |</a></li>
     <li><a href="properties.php">PROPERTIES |</a></li>
-    <li><a href="invest.php">INVEST |</a></li>
+    <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
     <li><a href="contactUs.php">CONTACT US</a></li>
   </ul>
 </nav>
@@ -45,96 +103,61 @@
 <div class="title">
       <h1>FAQ SUMMARY</h1>
 </div>
-    
-<main>
-
-
-<p>FAQ: Renting and Leasing Guidelines
-This document is designed to help you understand the process of renting and leasing before you sign an agreement. Knowing your rights and responsibilities can help you avoid issues and ensure a smooth experience.
-________________________________________
-1. What is the difference between renting and leasing?
-•	Renting – A short-term agreement (month-to-month or up to six months) with more flexibility.
-•	Leasing – A fixed-term contract (typically 6 to 12 months) with set terms and penalties for early termination.
-________________________________________
-2. What documents are required to apply?
-You’ll usually need:
-•	Proof of income (pay stubs, tax returns, or bank statements)
-•	Photo ID (driver’s license or passport)
-•	Rental history and landlord references
-•	Authorization for a credit check
-________________________________________
-3. How does the credit check process work?
-The landlord will assess your credit score and history to evaluate your ability to pay rent. A strong credit score may help you secure better terms.
-________________________________________
-4. What is a security deposit, and how much is it?
-A security deposit is a refundable payment (typically equal to one month’s rent) to cover damages or unpaid rent. It is refunded if no damage or unpaid rent is found when you move out.
-________________________________________
-5. What other upfront costs should I expect?
-You may need to pay:
-•	First and last month’s rent
-•	Application fees
-•	Pet deposit (if applicable)
-________________________________________
-6. What should I look for in a lease agreement?
-Key terms to review:
-•	Length of lease and renewal terms
-•	Rent amount and due date
-•	Maintenance and repair responsibilities
-•	Rules on pets, subletting, and guests
-________________________________________
-7. Can rent increase during the lease period?
-Rent is usually fixed during a lease term. For month-to-month agreements, landlords can increase rent with proper notice (usually 30–60 days).
-________________________________________
-8. What happens if I break my lease early?
-You may lose your security deposit or be required to pay a termination fee (often 1–2 months’ rent). Some leases allow early termination with specific conditions.
-________________________________________
-9. Who is responsible for repairs and maintenance?
-•	Landlord’s responsibility – Structural issues, plumbing, heating, and electrical systems.
-•	Tenant’s responsibility – Minor repairs, cleanliness, and any damage caused by misuse.
-________________________________________
-10. Can I make changes to the property (e.g., paint or install fixtures)?
-Most leases require landlord approval for changes. Unauthorized changes may result in repair costs deducted from your security deposit.
-________________________________________
-11. Are pets allowed?
-Check the lease for pet policies. Some landlords allow pets with a pet deposit or monthly pet fee, while others may prohibit pets.
-________________________________________
-12. How much notice is required to move out?
-•	For leases – Usually 30 to 60 days’ written notice before the lease ends.
-•	For month-to-month agreements – 30-day notice is standard.
-________________________________________
-13. How can I ensure I get my security deposit back?
-•	Clean the property thoroughly.
-•	Repair any damage caused during your stay.
-•	Provide proper notice and document the property's condition when you move out.
-________________________________________
-14. Can I sublet my apartment?
-Some leases allow subletting with landlord approval. Unauthorized subletting may be grounds for eviction.
-________________________________________
-15. What happens if the landlord sells the property?
-Your lease remains valid even if the property is sold. The new owner must honour the terms until the lease ends.
-________________________________________
-16. What should I do if I have a dispute with my landlord?
-•	Try to resolve the issue through communication.
-•	If unresolved, contact a local housing authority, tenant rights group, or seek legal advice.
-</p>
-
-</main>
-
-
-<footer>
-    <div class="footerItems">
-      <div id="copyRight">
-      Copyright &#169; 
-      </div>
-
-
-      <div class="emails">
-       <a href="">info@smartpay.com</a>
-       <a href="">contact@smartpay.com</a>
-      </div>
+  
+  <main>
+    <div class="title">
+      <h1>FAQ Summary</h1>
     </div>
-  </footer>
 
+    
+    <section class="faq-section">
+      <h2>Renting and Leasing Guidelines</h2>
+      <p>This document is designed to help you understand the process of renting and leasing before you sign an agreement. Knowing your rights and responsibilities can help you avoid issues and ensure a smooth experience.</p>
+
+      <div class="faq-container">
+        
+        <details class="faq-item">
+          <summary>1. What is the difference between renting and leasing?</summary>
+          <p><strong>Renting</strong> – A short-term agreement (month-to-month or up to six months) with more flexibility.<br>
+          <strong>Leasing</strong> – A fixed-term contract (typically 6 to 12 months) with set terms and penalties for early termination.</p>
+        </details>
+
+        
+        <details class="faq-item">
+          <summary>2. What documents are required to apply?</summary>
+          <p>You’ll usually need:
+            <ul>
+              <li>Proof of income (pay stubs, tax returns, or bank statements)</li>
+              <li>Photo ID (driver’s license or passport)</li>
+              <li>Rental history and landlord references</li>
+              <li>Authorization for a credit check</li>
+            </ul>
+          </p>
+        </details>
+
+       
+        <details class="faq-item">
+          <summary>3. How does the credit check process work?</summary>
+          <p>The landlord will assess your credit score and history to evaluate your ability to pay rent. A strong credit score may help you secure better terms.</p>
+        </details>
+
+       
+      </div>
+    </section>
+  </main>
+
+ 
+  <footer class="site-footer">
+  <div class="footer-content">
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandlordPro</p>
+    
+    <div class="footer-links">
+      <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+      <a href="/terms" class="footer-link">Terms</a>
+    </div>
+  </div>
+</footer>
 </body>
-
 </html>
+

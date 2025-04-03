@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    background-color: rgb(255, 255, 249);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  main {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .title {
+    text-align: center;
+    margin: 100px 0 50px;
+  }
+  
+  .mainContent {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 30px;
+  }
+  
+  main p {
+    padding: 50px;
+    margin: 40px;
+  }
+  
+  .mainContent p {
+    padding: 50px 100px;
+    margin-left: 80px;
+    background-color: rgb(130, 99, 79);
+    border-radius: 12px;
+    color: white;
+  }
+  
+  input, textarea, select {
+    width: 100%;
+    border-radius: 18px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .logIn, .submit-btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(71, 81, 119);
+    color: azure;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+  }
+  
+  .logIn {
+    width: 30%;
+    margin: 20px 0 0 19px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .logIn:hover, .submit-btn:hover {
+    background: rgb(50, 60, 90);
+  }
+  
+  .dontHaveAnAccount a {
+    margin-top: 40px;
+    color: black;
+  }
+  
+  #createAccountTxt {
+    font-weight: bold;
+  }
+  
+  #landlordOrTenant {
+    font-size: 20px;
+    font-style: italic;
+  }
+  
+  .contact-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+  }
+  
+  .contact-method {
+    background: #f8f8f8;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .contact-method h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .contact-method p {
+    margin: 15px 0;
+    color: #333;
+  }
+  
+  .contact-form-section {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f8f8f8;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .contact-form-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .site-footer {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .copyright {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-link {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  
+  .footer-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }

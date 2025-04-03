@@ -1,4 +1,3 @@
-<!-----This is the master page. The purpose is to use  as a template to make coding more efficient and save time.----- -->
 
 <!DOCTYPE html>
 <html lang="en">
