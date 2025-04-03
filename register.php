@@ -8,6 +8,7 @@ if(isset($_POST['signUp'])){
 
   $fullName = $_POST['fullName'];
   $email = $_POST['email'];
+  $userType = $_POST['userType'];
   $password = encrypt($_POST['password'], "cat");
 
 
@@ -20,7 +21,7 @@ if(isset($_POST['signUp'])){
   else{
 
   $sql = "INSERT INTO userInfo (fullName, email, password) 
-      VALUES ('$fullName', '$email', '$password')";
+      VALUES ('$fullName', '$email', '$password' , '$userType')";
   if($conn->query($sql) === TRUE){
     header("Location: logIn.php");
     echo "<script>alert('New record created successfully');</script>";

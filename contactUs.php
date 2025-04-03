@@ -98,7 +98,7 @@
 
 <footer class="site-footer">
   <div class="footer-content">
-    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandlordPro Properties</p>
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandlordPro</p>
     <div class="footer-links">
       <a href="mailto:landlordpro@gmail.com">landlordpro@gmail.com</a>
       <a href="mailto:contact@landlordpro.com">contact@landlordpro.com</a>

@@ -55,6 +55,16 @@
   <input type="text" name="fullName" placeholder="Zylith Wann">
 </div>
 
+
+<div>
+  <label for="userType">Account Type:</label>
+  <select class="input">
+    <option value="landlord">Landlord</option>
+    <option value="tenant">Tenant</option>
+
+  </select>
+</div>
+
 <div>
   <label for="email">Email Address:</label>
   <input type="email" name="email" placeholder="zylithwann@gmail.com">
@@ -77,7 +87,7 @@
 
 <footer class="site-footer">
   <div class="footer-content">
-    <p class="copyright">Copyright &copy; <span id="year">2024</span> SmartPay</p>
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandLordPro</p>
     
     <div class="footer-links">
       <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>

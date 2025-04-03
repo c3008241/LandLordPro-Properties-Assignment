@@ -102,7 +102,7 @@
 
 <footer class="site-footer">
   <div class="footer-content">
-    <p class="copyright">Copyright &copy; <span id="year">2024</span> SmartPay</p>
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandLordPro</p>
     <div class="footer-links">
       <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
       <a href="/privacy" class="footer-link">Privacy</a>
