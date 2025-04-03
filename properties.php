@@ -1,6 +1,26 @@
 <?php
 include 'connect.php';
 session_start();
+if(!isset($_SESSION['user_id'])){
+session_unset(); // Unset all session variables
+session_destroy(); // Destroy the session
+header("Location: logIn.php"); // Redirect to the login page
+}
+
+$user_id = $_SESSION['user_id'];
+
+$sql= mysqli_query($conn, "SELECT * FROM userInfo WHERE user_id = '$user_id'");
+$result = mysqli_fetch_assoc($sql);
+
+
+
+
+
+$userType = $result['userType'];
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +29,8 @@ session_start();
   <meta charset="UTF-8">  
   <link rel="stylesheet" href="styling/headerAndFooter.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="addProperties.css">
+
   <link rel="stylesheet" href="properties.css">
   <link rel="icon" href="images/landlordProLogo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +51,19 @@ session_start();
     <div>
       <input class="searchBar" placeholder="Search &#x1F50E;">
     </div>
+
+
+
+    <?php 
+
+    if($user_id){
+      echo'
+    <div>
+    <a href="logOut.php">LogOut</a>
+    </div>';
+    }
+    ?>
+
   </header>
 
   <nav class="navBar">
@@ -41,6 +76,8 @@ session_start();
     </ul>
   </nav>
 
+
+  <div class="findProperties">
   <div class="title">
     <h1>Properties</h1>
   </div>
@@ -80,6 +117,92 @@ session_start();
     <div class="properties-container">
       
     </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+<?php 
+
+if ($userType == 'landlord') {
+echo'
+<div class = "addProperties">
+<div class="title">
+    <h1>Add Properties</h1>
+  </div>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="property-form-container">
+
+        <form action="addProperties.php" method="POST" class="property-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="property-name">Property Name</label>
+              <input type="text" id="property-name" name="propertyName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="property-address">Address</label>
+              <input type="text" id="property-address" name="propertyAddress" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="property-type">Property Type</label>
+              <select id="property-type" name="propertyType" required>
+                <option value="">Select Type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Condo">Condo</option>
+                <option value="Townhouse">Townhouse</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="bedrooms">Bedrooms</label>
+              <input type="number" id="bedrooms" name="bedrooms" min="1" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bathrooms">Bathrooms</label>
+              <input type="number" id="bathrooms" name="bathrooms" min="1" step="0.5" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="rent-amount">Monthly Rent ($)</label>
+              <input type="number" id="rent-amount" name="rentAmount" min="0" step="0.01" required>
+            </div>
+            
+            <div class="form-group full-width">
+              <label for="property-description">Description</label>
+              <textarea id="property-description" name="propertyDescription" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group full-width">
+              <label for="property-image">Upload Images</label>
+              <input type="file" id="property-image" name="propertyImg" multiple accept="image/*">
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" name="addProperty">Save Property</button>
+            <button type="reset" class="btn btn-secondary">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>';
+}
+?>
+
+    
   </main>
 
   <footer class="site-footer">
@@ -130,5 +253,19 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
