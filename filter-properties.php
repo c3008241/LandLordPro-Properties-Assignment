@@ -36,7 +36,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="property-card">';
+        echo '<div class="property-card" data-property-id="' . $row['property_id'] . '">'; // IMPORTANT: Added data-property-id
         echo '<h3>' . htmlspecialchars($row['title'] ?? $row['location'] . ' Property') . '</h3>';
         echo '<p><strong>Location:</strong> ' . htmlspecialchars($row['location']) . '</p>';
         echo '<p><strong>Price:</strong> £' . number_format($row['price'], 2) . '</p>';

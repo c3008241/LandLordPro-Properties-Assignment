@@ -16,13 +16,13 @@ if(isset($_POST['addProperty'])){
     $propertyImg = $_POST['propertyImg'];
   
   
-    // $check = "SELECT * FROM properties WHERE propertyName = '$propertyName'";
-    // $result = $conn->query($check);
-    // if($result->num_rows > 0){
-    //   echo "That property already exists";
-    //   exit();
-    // }
-    // else{
+    $check = "SELECT * FROM properties WHERE propertyName = '$propertyName'";
+    $result = $conn->query($check);
+    if($result->num_rows > 0){
+      echo "That property already exists";
+      exit();
+    }
+    else{
   
     $sql = "INSERT INTO Addproperties (propertyName, propertyAddress, propertyType, bedrooms, rentAmount, propertyDescription , propertyImg)
         VALUES ('$propertyName', '$propertyAddress', '$propertyType', '$bedrooms', '$rentAmount', '$propertyDescription' , '$propertyImg')"; 
