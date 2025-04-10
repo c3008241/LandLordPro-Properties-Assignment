@@ -52,8 +52,8 @@
     
     <div class="contact-method">
       <h2><i class="icon">📞</i> Phone Support</h2>
-      <p>Main office: <a href="tel:+18005551234">1-800-555-1234</a></p>
-      <p>Emergency maintenance: <a href="tel:+18005554321">1-800-555-4321</a> (24/7)</p>
+      <p>Main office: <a href="tel:+44738399938">0738399938</a></p>
+      <p>Emergency maintenance: <a href="tel:+44738399938">0738399938</a> (24/7)</p>
       <p>Office hours: Mon-Fri 9am-6pm EST</p>
     </div>
     
@@ -61,7 +61,7 @@
       <h2><i class="icon">🏢</i> Visit Us</h2>
       <p>LandlordPro Properties HQ</p>
       <p>123 Property Lane, Suite 100</p>
-      <p>Toronto, ON M5V 2H1</p>
+      <p>Sheffield S1 2NU </p>
       <p>By appointment only</p>
     </div>
   </section>

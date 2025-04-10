@@ -39,7 +39,7 @@ body {
     margin-left: 80px;
     background-color: rgb(130, 99, 79);
     border-radius: 12px;
-    color: white;
+    color: rgb(196, 39, 39);
   }
   
   input, textarea, select {
