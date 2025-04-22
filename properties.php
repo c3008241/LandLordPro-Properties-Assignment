@@ -1,16 +1,30 @@
 <?php
+
+
 include 'connect.php';
 session_start();
-if(!isset($_SESSION['user_id'])){
-session_unset();
-session_destroy();
-header("Location: logIn.php");
+
+if (!isset($_SESSION['user_id'])) {
+    session_unset();
+    session_destroy();
+    header("Location: logIn.php");
+    exit();
 }
 
-$user_id = $_SESSION['user_id'];
-$sql= mysqli_query($conn, "SELECT * FROM userInfo WHERE user_id = '$user_id'");
-$result = mysqli_fetch_assoc($sql);
-$userType = $result['userType'];
+$user_id = (int)$_SESSION['user_id'];
+
+
+$stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result()->fetch_assoc();
+
+if (!$result) {
+    header("Location: logIn.php");
+    exit();
+}
+
+$userType = $result['user_type'];
 ?>
 
 <!DOCTYPE html>
@@ -196,7 +210,7 @@ $userType = $result['userType'];
     document.getElementById('propertyFilters').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    
+
     const formData = new FormData(this);
     const params = new URLSearchParams(formData);
     

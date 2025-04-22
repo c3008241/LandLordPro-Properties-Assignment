@@ -2,41 +2,33 @@
 session_start();
 require 'connect.php';
 
-if (!isset($_SESSION['user_type']) {
-    die("Unauthorized");
+if (!isset($_SESSION['user_id']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("HTTP/1.1 403 Forbidden");
+    exit();
 }
 
-if ($_SESSION['user_type'] !== 'landlord') {
-    die("Unauthorized");
-}
+$stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?");
+$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->execute();
+$user = $stmt->get_result()->fetch_assoc();
 
-if (!isset($_POST['id']) || !isset($_POST['status'])) {
-    die("Invalid request");
+if (!$user || $user['user_type'] !== 'landlord') {
+    header("HTTP/1.1 403 Forbidden");
+    exit();
 }
 
 $app_id = (int)$_POST['id'];
-$status = in_array($_POST['status'], ['approved', 'rejected']) ? $_POST['status'] : die("Invalid status");
+$status = in_array($_POST['status'], ['approved', 'rejected']) ? $_POST['status'] : 'pending';
 
-$check = $conn->prepare("SELECT landlord_id FROM applications WHERE id = ?");
-$check->bind_param("i", $app_id);
-$check->execute();
-$check_result = $check->get_result();
+$stmt = $conn->prepare("UPDATE applications a 
+                       JOIN properties p ON a.property_id = p.property_id
+                       SET a.status = ?
+                       WHERE a.id = ? AND p.landlord_id = ?");
+$stmt->bind_param("sii", $status, $app_id, $_SESSION['user_id']);
 
-if ($check_result->num_rows === 0) {
-    die("Application not found");
-}
-
-if ($check_result->fetch_assoc()['landlord_id'] != $_SESSION['user_id']) {
-    die("Unauthorized");
-}
-
-$update = $conn->prepare("UPDATE applications SET status = ? WHERE id = ?");
-$update->bind_param("si", $status, $app_id);
-
-if ($update->execute()) {
-    echo "Status updated successfully";
+if ($stmt->execute()) {
+    header("HTTP/1.1 200 OK");
 } else {
-    http_response_code(500);
-    echo "Error updating status";
+    header("HTTP/1.1 500 Internal Server Error");
 }
 ?>

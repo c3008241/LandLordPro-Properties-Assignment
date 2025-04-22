@@ -58,7 +58,7 @@
 
 <div>
   <label for="userType">Account Type:</label>
-  <select class="input" name="userType">
+  <select class="input" name="user_type">
     <option value="landlord">Landlord</option>
     <option value="tenant">Tenant</option>
   </select>

@@ -26,11 +26,11 @@
   </header>
   <nav class="navBar">
   <ul>
-    <!-- Core Conversion Drivers -->
+   
     <li><a href="how-it-works.html">✨ HOW IT WORKS</a></li> 
     <li><a href="pricing.html">💲 PRICING</a></li>
     
-    <!-- Social Proof -->
+  
     <li><a href="testimonials.html">⭐ REVIEWS</a></li>  
 </nav>
 

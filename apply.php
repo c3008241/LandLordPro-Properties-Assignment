@@ -7,15 +7,30 @@ if (!isset($_GET['property_id'])) {
     exit();
 }
 
-$property_id = $_GET['property_id'];
+$property_id = (int)$_GET['property_id'];
 $property = $conn->query("SELECT * FROM properties WHERE property_id = $property_id")->fetch_assoc();
 
+if (!$property) {
+    header("Location: properties.php");
+    exit();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $message = $_POST['message'];
-    $tenant_id = $_SESSION['user_id'] ?? null;
-    $landlord_id = $property['landlord_id'];
+    $message = trim($_POST['message']);
+    $tenant_id = (int)$_SESSION['user_id'];
+    $landlord_id = (int)$property['landlord_id'];
     
-    $stmt = $conn->prepare("INSERT INTO applications (property_id, tenant_id, landlord_id, message) VALUES (?, ?, ?, ?)");
+    $landlord_check = $conn->query("SELECT user_id FROM userinfo WHERE user_id = $landlord_id");
+    if ($landlord_check->num_rows === 0) {
+        die("Invalid property owner");
+    }
+    
+    $stmt = $conn->prepare("INSERT INTO applications (property_id, tenant_id, landlord_id, message, status, application_date) VALUES (?, ?, ?, ?, 'pending', NOW())");
     $stmt->bind_param("iiis", $property_id, $tenant_id, $landlord_id, $message);
     
     if ($stmt->execute()) {
