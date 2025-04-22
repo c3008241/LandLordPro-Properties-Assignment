@@ -16,15 +16,16 @@ if(isset($_POST['addProperty'])){
     $propertyImg = $_POST['propertyImg'];
   
   
-    $check = "SELECT * FROM properties WHERE propertyName = '$propertyName'";
+    $check = "SELECT * FROM addProperties WHERE propertyName = '$propertyName'";
     $result = $conn->query($check);
     if($result->num_rows > 0){
       echo "That property already exists";
       exit();
     }
+  }
     else{
   
-    $sql = "INSERT INTO Addproperties (propertyName, propertyAddress, propertyType, bedrooms, rentAmount, propertyDescription , propertyImg)
+    $sql = "INSERT INTO addProperties (propertyName, propertyAddress, propertyType, bedrooms, rentAmount, propertyDescription , propertyImg)
         VALUES ('$propertyName', '$propertyAddress', '$propertyType', '$bedrooms', '$rentAmount', '$propertyDescription' , '$propertyImg')"; 
 
     if($conn->query($sql) === TRUE){
@@ -33,7 +34,6 @@ if(isset($_POST['addProperty'])){
       echo "Error: " . $conn->error;
       
     }
-//   }
   }
 
 

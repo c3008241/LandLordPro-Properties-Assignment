@@ -2,21 +2,19 @@
 session_start();
 require 'connect.php';
 
-
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-
 $user_id = $_SESSION['user_id'];
-$stmt = $conn->prepare("SELECT userType FROM userinfo WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?"); 
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if (!$user || $user['userType'] !== 'landlord') {
+if (!$user || $user['user_type'] !== 'landlord') { 
     header("Location: login.php");
     exit();
 }
@@ -26,7 +24,9 @@ $query = "SELECT a.id, p.location, t.fullName, a.message, a.status, a.applicatio
           FROM applications a
           JOIN properties p ON a.property_id = p.property_id
           JOIN userinfo t ON a.tenant_id = t.user_id
-          WHERE a.landlord_id = ?";
+          WHERE a.landlord_id = ?
+          ORDER BY a.application_date DESC";
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $landlord_id);
 $stmt->execute();

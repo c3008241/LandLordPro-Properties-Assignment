@@ -8,7 +8,7 @@ if(isset($_POST['signUp'])){
 
   $fullName = $_POST['fullName'];
   $email = $_POST['email'];
-  $userType = $_POST['userType'];
+  $userType = $_POST['user_type'];
   $password = encrypt($_POST['password'], "cat");
 
 
@@ -20,7 +20,7 @@ if(isset($_POST['signUp'])){
   }
   else{
 
-  $sql = "INSERT INTO userInfo (fullName, userType, email, password) 
+  $sql = "INSERT INTO userInfo (fullName, user_type, email, password) 
       VALUES ('$fullName', '$userType','$email', '$password')";
   if($conn->query($sql) === TRUE){
     echo "Registered successfully";
@@ -47,7 +47,7 @@ if (mysqli_num_rows($query) == 1) {
     $_SESSION['user_id'] = $row['user_id'];
     $_SESSION['email'] = $row['email'];
 
-    header("Location: properties.php"); // Redirect to the properties page
+    header("Location: properties.php");
     exit();
 } else {
     echo "Invalid email or password.";
