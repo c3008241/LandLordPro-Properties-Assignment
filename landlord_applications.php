@@ -20,17 +20,22 @@ if (!$user || $user['user_type'] !== 'landlord') {
 }
 
 $landlord_id = $_SESSION['user_id'];
+
+// Modified query to ensure proper landlord-property relationship
 $query = "SELECT a.id, p.location, t.fullName, a.message, a.status, a.application_date
           FROM applications a
           JOIN properties p ON a.property_id = p.property_id
           JOIN userinfo t ON a.tenant_id = t.user_id
-          WHERE a.landlord_id = ?
+          WHERE p.landlord_id = ?  -- Changed from a.landlord_id to p.landlord_id
           ORDER BY a.application_date DESC";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $landlord_id);
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Debugging output (remove in production)
+error_log("Applications query executed. Found: " . $result->num_rows . " applications");
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,6 +66,14 @@ $result = $stmt->get_result();
         .approve-btn { background: #4CAF50; color: white; }
         .reject-btn { background: #f44336; color: white; }
         h1 { text-align: center; margin: 20px 0; }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px auto;
+            max-width: 800px;
+            border-radius: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +107,11 @@ $result = $stmt->get_result();
     <h1>Tenant Applications</h1>
     
     <?php if ($result->num_rows === 0): ?>
-        <p style="text-align: center;">No applications found.</p>
+        <div class="debug-info">
+            <p>No applications found for your properties.</p>
+            <p>Landlord ID: <?= $landlord_id ?></p>
+            <p>SQL Query: <?= htmlspecialchars($query) ?></p>
+        </div>
     <?php else: ?>
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="application">
