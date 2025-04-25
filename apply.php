@@ -5,7 +5,6 @@
 session_start();
 include 'connect.php';
 
-// Redirect if property_id not provided
 if (!isset($_GET['property_id'])) {
     header("Location: properties.php?error=no_property");
     exit();
@@ -13,7 +12,6 @@ if (!isset($_GET['property_id'])) {
 
 $property_id = (int)$_GET['property_id'];
 
-// Get property details using prepared statement - only selecting existing columns
 $stmt = $conn->prepare("SELECT 
     property_id,
     location, 
@@ -32,31 +30,27 @@ if (!$property) {
     exit();
 }
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?redirect=apply&property_id=".$property_id);
     exit();
 }
 
-// Initialize variables
 $success = null;
 $error = null;
 $message_value = '';
 
-// Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message = trim($_POST['message']);
     $message_value = htmlspecialchars($message);
     $tenant_id = (int)$_SESSION['user_id'];
     $landlord_id = (int)$property['landlord_id'];
     
-    // Validate message
     if (empty($message)) {
         $error = "Please enter an application message";
     } elseif (strlen($message) < 20) {
         $error = "Your message should be at least 20 characters long";
     } else {
-        // Verify landlord exists
+      
         $stmt = $conn->prepare("SELECT user_id FROM userinfo WHERE user_id = ?");
         $stmt->bind_param("i", $landlord_id);
         $stmt->execute();
@@ -64,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->get_result()->num_rows === 0) {
             $error = "Invalid property owner";
         } else {
-            // Submit application
+         
             $stmt = $conn->prepare("INSERT INTO applications (property_id, tenant_id, landlord_id, message, status, application_date) 
                                   VALUES (?, ?, ?, ?, 'pending', NOW())");
             $stmt->bind_param("iiis", $property_id, $tenant_id, $landlord_id, $message);
@@ -176,10 +170,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </footer>
 
 <script>
-  // Update copyright year
+
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Form validation
+
   document.getElementById('applicationForm').addEventListener('submit', function(e) {
     const message = document.getElementById('message').value.trim();
     if (message.length < 20) {

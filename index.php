@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styling/headerAndFooter.css">
-  <link rel="stylesheet" href="index.css?v=1.0">
+  <link rel="stylesheet" href="index.css?">
   <link rel="icon" href="images/landlordProLogo.png">
   <script src="index.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
