@@ -47,14 +47,14 @@
         <div class="option-icon">🏠</div>
         <h2>Tenant</h2>
         <p>Log in to view and manage your rented properties</p>
-        <a href="signUp.php" class="select-btn">Log In/ Sign up as Tenant</a>
+        <a href="logIn.php" class="select-btn">Log In/ Sign up as Tenant</a>
       </div>
       
       <div class="option-card">
         <div class="option-icon">👔</div>
         <h2>Landlord</h2>
         <p>Log in to manage your properties and tenants</p>
-        <a href="signUp.php" class="select-btn">Log In/ Sign up as Landlord</a>
+        <a href="logIn.php" class="select-btn">Log In/ Sign up as Landlord</a>
       </div>
     </div>
   </div>

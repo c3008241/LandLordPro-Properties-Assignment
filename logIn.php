@@ -70,10 +70,9 @@
 
 <nav class="navBar">
   <ul>
+    <li><a href="index.php">HOME |</a></li>
     <li><a href="logIn.php">LOG IN |</a></li>
     <li><a href="signUp.php">SIGN UP |</a></li>
-    <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
-    <li><a href="contactUs.php">CONTACT US</a></li>
   </ul>
 </nav>
 

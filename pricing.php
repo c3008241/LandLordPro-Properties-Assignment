@@ -99,14 +99,15 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-content">
-      <p class="copyright">Copyright &copy; <span id="year">2025</span> LandlordPro</p>
-      <div class="footer-links">
-        <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
-        <a href="/privacy" class="footer-link">Privacy</a>
-        <a href="/terms" class="footer-link">Terms</a>
-      </div>
+  <div class="footer-content">
+    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandlordPro</p>
+    
+    <div class="footer-links">
+      <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
+      <a href="/privacy" class="footer-link">Privacy</a>
+      <a href="/terms" class="footer-link">Terms</a>
     </div>
-  </footer>
+  </div>
+</footer>
 </body>
 </html>
