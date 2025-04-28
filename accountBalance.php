@@ -123,6 +123,7 @@ echo '£'. $balance;
   <label for="email">Reciever Email:</label>
   <input type="email" name="email">
 
+
   <label for="amount">Amount:</label>
   <input type="number" name= "amount" value="amount">
 
