@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = (int)$_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 $stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
@@ -109,27 +109,35 @@ $userType = $result['user_type'];
       <input class="searchBar" placeholder="Search &#x1F50E;">
     </div>
 
-    <?php if($user_id): ?>
-    <div>
-      <a href="logOut.php">LogOut</a>
-    </div>
-    <?php endif; ?>
+   
   </header>
 
   <nav class="navBar">
-    <ul>
-    <?php if($userType === 'landlord'): ?>
-            <li><a href="landlord_applications.php" style="color:#4CAF50;font-weight:bold;">VIEW APPLICATIONS |</a></li>
-        <?php endif; ?>
-      <li><a href="logIn.php">LOG IN |</a></li>
-      <li><a href="signUp.php">SIGN UP |</a></li>
-      <li><a href="properties.php">PROPERTIES |</a></li>
-      <li><a href="contactUs.php">CONTACT US</a></li>
-      <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
+  <ul>
+
+  <?php 
+
+if(!$user_id){
+echo '<li><a href="logIn.php">LOG IN |</a></li>
+    <li><a href="signUp.php">SIGN UP |</a></li>';
+}
+  else if($user_id){
+  echo'<li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
+    <li><a href="properties.php">PROPERTIES |</a></li>';
+  }
+  ?>
       
-    </ul>
+    <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
+    <li><a href="contactUs.php">CONTACT US |</a></li>
+
+    <?php 
+    if($user_id){
+    echo'<li><a href="logOut.php">LOG OUT</a></li>';
+  }
+    ?>
     
-  </nav>
+  </ul>
+</nav>
 
 
   <div class="findProperties">

@@ -7,7 +7,7 @@
   <link rel="icon" href="images/landlordProLogo.png">
   <script src="index.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choose Account Type | LandlordPro Properties</title>
+  <title>Home | LandlordPro Properties</title>
 </head>
 <body>
   <header>
@@ -27,9 +27,12 @@
 
   <nav class="navBar">
     <ul>
+      <li><a href="index.php">HOME</a></li>
       <li><a href="how-it-works.php">HOW IT WORKS</a></li>
       <li><a href="pricing.php">PRICING</a></li>
       <li><a href="reviews.php">REVIEWS</a></li>
+      <li><a href="faqGuidelines.php">FAQ SUMMARY</a></li>
+      <li><a href="contactUs.php">CONTACT US</a></li>
     </ul>
   </nav>
 
@@ -44,14 +47,14 @@
         <div class="option-icon">🏠</div>
         <h2>Tenant</h2>
         <p>Log in to view and manage your rented properties</p>
-        <a href="signUp.php" class="select-btn">Log In/Sign up as Tenant</a>
+        <a href="signUp.php" class="select-btn">Log In/ Sign up as Tenant</a>
       </div>
       
       <div class="option-card">
         <div class="option-icon">👔</div>
         <h2>Landlord</h2>
         <p>Log in to manage your properties and tenants</p>
-        <a href="signUp.php" class="select-btn">Log In/Sign up as Landlord</a>
+        <a href="signUp.php" class="select-btn">Log In/ Sign up as Landlord</a>
       </div>
     </div>
   </div>
