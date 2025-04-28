@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styling/headerAndFooter.css">
-  <link rel="stylesheet" href="how-it-works.css">
+  <link rel="stylesheet" href="reviews.css">
   <link rel="icon" href="images/landlordProLogo.png">
-  <script src="how-it-works.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How It Works | LandlordPro Properties</title>
+  <title>Reviews | LandlordPro Properties</title>
 </head>
 <body>
   <header>
@@ -33,21 +32,42 @@
     </ul>
   </nav>
 
-  <div class="title">
+  <main class="reviews-container">
     <h1>REVIEWS</h1>
-  </div>
-
-
-
-
-<footer class="site-footer">
-  <div class="footer-content">
-    <p class="copyright">Copyright &copy; <span id="year">2024</span> LandlordPro</p>
-    
-    <div class="footer-links">
-      <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
-      <a href="/privacy" class="footer-link">Privacy</a>
-      <a href="/terms" class="footer-link">Terms</a>
+    <div class="trust-banner">
+      <p>Trusted by landlords across the region for our transparent and value-driven approach</p>
     </div>
-  </div>
-</footer>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>Sarah J.</h3>
+        <p>"LandlordPro made finding my perfect rental so easy!"</p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>Michael T.</h3>
+        <p>"This platform has saved me so much time as a landlord."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h3>Emma R.</h3>
+        <p>"The best rental experience I've ever had."</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="copyright">Copyright &copy; <span id="year">2025</span> LandlordPro</p>
+      <div class="footer-links">
+        <a href="mailto:landlordpro@gmail.com" class="footer-link">landlordpro@gmail.com</a>
+        <a href="/privacy" class="footer-link">Privacy</a>
+        <a href="/terms" class="footer-link">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -34,7 +34,7 @@
   </nav>
 
   <div class="title">
-    <h1>Select your account type...</h1>
+    <h1>Please select your account type...</h1>
   </div>
     
   <main>

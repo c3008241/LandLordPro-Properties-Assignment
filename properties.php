@@ -1,6 +1,4 @@
 <?php
-
-
 include 'connect.php';
 session_start();
 
@@ -12,7 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = (int)$_SESSION['user_id'];
-
 
 $stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
@@ -38,10 +35,67 @@ $userType = $result['user_type'];
   <link rel="icon" href="images/landlordProLogo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Properties | LandlordPro Properties</title>
+  <style>
+    
+    .property-card {
+      width: 300px;
+      margin: 15px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: white;
+    }
+    
+    .property-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .property-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .property-card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    
+    .property-card p {
+      margin: 8px 0;
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.4;
+    }
+    
+    .apply-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    
+    #propertyResults {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-
-  <header>
+<header>
     <div class="logoWrapper">
       <a href="index.php" id="logo">
         <img src="images/landlordProLogo.png" alt="LandlordPro Logo" height="60" width="60">
@@ -77,6 +131,7 @@ $userType = $result['user_type'];
     
   </nav>
 
+
   <div class="findProperties">
     <div class="title">
       <h1>Properties</h1>
@@ -84,6 +139,7 @@ $userType = $result['user_type'];
 
     <main>
       <form id="propertyFilters" action="filterProperties.php" method="GET">
+      
         <select name="location">
             <option value="Any">Any Location</option>
             <option value="Sheffield">Sheffield</option>
@@ -107,26 +163,28 @@ $userType = $result['user_type'];
         </select>
 
         <button type="submit">Search Properties</button>
+      
       </form>
 
       <div id="propertyResults">
         <?php 
-        $properties = mysqli_query($conn, "SELECT * FROM properties");
+        $properties = mysqli_query($conn, "SELECT DISTINCT property_id, location, price, bedroomQuantity, propertyImg FROM properties");
         while($property = mysqli_fetch_assoc($properties)) {
             echo '<div class="property-card">';
-            echo '<h3>'.htmlspecialchars($property['title'] ?? $property['location']).'</h3>';
-            echo '<p>Location: '.htmlspecialchars($property['location']).'</p>';
-            echo '<p>Price: £'.htmlspecialchars($property['price']).'</p>';
-            echo '<p>Bedrooms: '.htmlspecialchars($property['bedroomQuantity']).'</p>';
+            
+            $imagePath = !empty($property['propertyImg']) ? 'uploads/properties/'.$property['propertyImg'] : 'images/property-placeholder.jpg';
+            echo '<div class="property-image"><img src="'.$imagePath.'" alt="'.htmlspecialchars($property['location']).'"></div>';
+            
+            echo '<h3>'.htmlspecialchars($property['location']).'</h3>';
+            echo '<p>Price: £'.number_format($property['price'], 2).'</p>';
+            echo '<p>Bedrooms: '.$property['bedroomQuantity'].'</p>';
             
             if ($userType === 'tenant') {
-              echo '<form action="apply.php" method="GET" style="display:inline;">
-                    <input type="hidden" name="property_id" value="'.$property['property_id'].'">
-                    <button type="submit" style="background:#4CAF50;color:white;padding:5px 10px;border:none;border-radius:3px;cursor:pointer;">
-                      Apply Now
-                    </button>
-                    </form>';
-          }
+                echo '<form action="apply.php" method="GET">';
+                echo '<input type="hidden" name="property_id" value="'.$property['property_id'].'">';
+                echo '<button type="submit" class="apply-btn">Apply Now</button>';
+                echo '</form>';
+            }
             
             echo '</div>';
         }
@@ -142,7 +200,7 @@ $userType = $result['user_type'];
       <main class="main-content">
         <div class="container">
           <div class="property-form-container">
-            <form action="addProperties.php" method="POST" class="property-form">
+          <form action="addProperties.php" method="POST" enctype="multipart/form-data" class="property-form">
               <div class="form-grid">
                 <div class="form-group">
                   <label for="property-name">Property Name</label>
@@ -232,5 +290,7 @@ $userType = $result['user_type'];
         });
 });
   </script>
+
+  </div>
 </body>
 </html>
