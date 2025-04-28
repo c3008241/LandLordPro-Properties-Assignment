@@ -1,4 +1,19 @@
 
+<?php
+include 'connect.php';
+session_start();
+
+$isLoggedIn = false;
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $isLoggedIn = true;
+} 
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,13 +105,32 @@
     </div>
   </header>
 
-<nav class="navBar">
+  <nav class="navBar">
   <ul>
-  <li><a href="logIn.php">LOG IN |</a></li>
-    <li><a href="signUp.php">SIGN UP |</a></li>
-    <li><a href="properties.php">PROPERTIES |</a></li>
-    <li><a href="faqGuidlines.php">FAQ GUIDLINE</a></li>
+  <?php 
+  if(!$isLoggedIn) {
+      echo '
+      <li><a href="index.php">HOME</a></li>
+      <li><a href="how-it-works.php">HOW IT WORKS</a></li>
+      <li><a href="pricing.php">PRICING</a></li>
+      <li><a href="reviews.php">REVIEWS</a></li>
+    
+  ';
+    } 
+  else if($isLoggedIn) {
+      echo '<li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>';
+    echo'<li><a href="properties.php">PROPERTIES |</a></li>
+    ';
+
+  }
+  ?> 
+  <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
     <li><a href="contactUs.php">CONTACT US</a></li>
+    <?php 
+  if($isLoggedIn) {
+      echo '<li><a href="logOut.php">LOG OUT</a></li>';
+    } 
+  ?>
   </ul>
 </nav>
 
@@ -106,7 +140,7 @@
   
   <main>
     <div class="title">
-      <h1>FAQ Summary</h1>
+      <h1>FAQ Guidelines</h1>
     </div>
 
     

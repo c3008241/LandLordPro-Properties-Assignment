@@ -27,9 +27,12 @@
 
   <nav class="navBar">
     <ul>
+      <li><a href="index.php">HOME</a></li>
       <li><a href="how-it-works.php">HOW IT WORKS</a></li>
       <li><a href="pricing.php">PRICING</a></li>
       <li><a href="reviews.php">REVIEWS</a></li>
+      <li><a href="faqGuidelines.php">FAQ SUMMARY</a></li>
+      <li><a href="contactUs.php">CONTACT US</a></li>
     </ul>
   </nav>
 

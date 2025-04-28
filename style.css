@@ -6,7 +6,7 @@ body{
 
 body a{
   text-decoration: none;
-  color:white;
+  
 }
 
  
@@ -78,6 +78,8 @@ label{
 .logIn{
   padding:15px;
   width:30%;
+  text-align:center;
+  cursor: pointer;
   border-radius:10px;
   border:none;
   background-color:rgb(71, 81, 119);
@@ -200,3 +202,31 @@ color:black;
   color: var(--accent-color);
 }
 
+.boldBtn{
+  color:black;
+  font-weight: bold;
+}
+
+
+
+#accountInfo{
+  margin-left:380px;
+}
+
+#back{
+  text-align:center;
+}
+
+.accountDetails{
+  display:none;
+}
+
+.sendMoney{
+  display:none;
+}
+
+.row{
+  display:flex;
+  flex-direction:row;
+  margin-right:300px;
+}

@@ -17,6 +17,7 @@ body {
   font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, sans-serif;
   font-weight: 400;
   line-height: 1.5;
+  margin:0;
 }
 
 .tab-container {
