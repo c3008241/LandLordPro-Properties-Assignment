@@ -1,6 +1,10 @@
+
+
 <?php
 include 'connect.php';
 session_start();
+// $conn = connectDB();
+
 
 if (!isset($_SESSION['user_id'])) {
     session_unset();
@@ -25,6 +29,8 @@ $userType = $result['user_type'];
 ?>
 
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">  
@@ -113,31 +119,29 @@ $userType = $result['user_type'];
   </header>
 
   <nav class="navBar">
-  <ul>
+    <ul>
+    <?php if($userType === 'landlord'): ?>
+            <li><a href="landlord_applications.php" style="color:#4CAF50;font-weight:bold;">VIEW APPLICATIONS |</a></li>
+        <?php endif; ?>
 
-  <?php 
+        <?php 
+      if($user_id){
+        echo'  <li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
+      <li><a href="properties.php">PROPERTIES |</a></li>';
+      }
+        ?>
+      <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
+      <li><a href="contactUs.php">CONTACT US |</a></li>
 
-if(!$user_id){
-echo '<li><a href="logIn.php">LOG IN |</a></li>
-    <li><a href="signUp.php">SIGN UP |</a></li>';
-}
-  else if($user_id){
-  echo'<li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
-    <li><a href="properties.php">PROPERTIES |</a></li>';
-  }
-  ?>
+      <?php 
+      if($user_id){
+        echo'<li><a href="logOut.php">LOG OUT</a></li>';
+      }
+        ?>
       
-    <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
-    <li><a href="contactUs.php">CONTACT US |</a></li>
-
-    <?php 
-    if($user_id){
-    echo'<li><a href="logOut.php">LOG OUT</a></li>';
-  }
-    ?>
+    </ul>
     
-  </ul>
-</nav>
+  </nav>
 
 
   <div class="findProperties">
@@ -246,7 +250,7 @@ echo '<li><a href="logIn.php">LOG IN |</a></li>
                 </div>
                 <div class="form-group full-width">
                   <label for="property-image">Upload Images</label>
-                  <input type="file" id="property-image" name="propertyImg" multiple accept="image/*">
+                  <input type="file" id="property-image" name="propertyImg" multiple accept="image/*" required>
                 </div>
               </div>
               <div class="form-actions">

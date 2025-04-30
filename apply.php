@@ -4,6 +4,7 @@
 <?php
 session_start();
 include 'connect.php';
+// $conn = connectDB();
 
 if (!isset($_GET['property_id'])) {
     header("Location: properties.php?error=no_property");
@@ -65,6 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($stmt->execute()) {
                 $success = "Application submitted successfully!";
+
+            header("refresh:5;url=accountBalance.php?property_id=" . urlencode($property_id));
+
             } else {
                 $error = "Error submitting application. Please try again.";
             }
@@ -109,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav class="navBar">
   <ul>
     <li><a href="properties.php">PROPERTIES</a></li>
-    <li><a href="faqGuidlines.php">FAQ</a></li>
+    <li><a href="faqGuidelines.php">FAQ SUMMARY</a></li>
     <li><a href="contactUs.php">CONTACT US</a></li>
     <?php if(!isset($_SESSION['user_id'])): ?>
       <li><a href="logIn.php">LOG IN</a></li>

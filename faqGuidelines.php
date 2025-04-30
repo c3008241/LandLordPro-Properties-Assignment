@@ -1,16 +1,25 @@
-
 <?php
 include 'connect.php';
 session_start();
+// $conn = connectDB();
 
-$isLoggedIn = false;
-
-if (isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
+    $user_id = null;
+    $userType = null; 
+} else {
     $user_id = $_SESSION['user_id'];
-    $isLoggedIn = true;
-} 
 
+    $stmt = $conn->prepare("SELECT user_type FROM userinfo WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
 
+    if ($result) {
+        $userType = $result['user_type'];
+    } else {
+        $userType = null;  
+    }
+}
 ?>
 
 
@@ -106,33 +115,38 @@ if (isset($_SESSION['user_id'])) {
   </header>
 
   <nav class="navBar">
-  <ul>
-  <?php 
-  if(!$isLoggedIn) {
-      echo '
-      <li><a href="index.php">HOME</a></li>
-      <li><a href="how-it-works.php">HOW IT WORKS</a></li>
-      <li><a href="pricing.php">PRICING</a></li>
-      <li><a href="reviews.php">REVIEWS</a></li>
-    
-  ';
-    } 
-  else if($isLoggedIn) {
-      echo '<li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>';
-    echo'<li><a href="properties.php">PROPERTIES |</a></li>
-    ';
+    <ul>
+    <?php if($userType === 'landlord'): ?>
+            <li><a href="landlord_applications.php" style="color:#4CAF50;font-weight:bold;">VIEW APPLICATIONS |</a></li>
+        <?php endif; ?>
 
-  }
-  ?> 
-  <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
-    <li><a href="contactUs.php">CONTACT US</a></li>
-    <?php 
-  if($isLoggedIn) {
-      echo '<li><a href="logOut.php">LOG OUT</a></li>';
-    } 
-  ?>
-  </ul>
-</nav>
+        <?php 
+      if($user_id){
+        echo'  <li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
+      <li><a href="properties.php">PROPERTIES |</a></li>';
+      }
+      else if(!$user_id){
+        echo'  <li><a href="index.php">HOME |</a></li>
+        <li><a href="how-it-works.php">HOW IT WORKS |</a></li>
+        <li><a href="pricing.php">PRICING |</a></li>
+        <li><a href="reviews.php">REVIEWS |</a></li>';
+        
+
+      }
+        ?>
+
+      <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
+      <li><a href="contactUs.php">CONTACT US |</a></li>
+
+      <?php 
+      if($user_id){
+        echo'<li><a href="logOut.php">LOG OUT</a></li>';
+      }
+        ?>
+      
+    </ul>
+    
+  </nav>
 
 <div class="title">
       <h1>FAQ SUMMARY</h1>

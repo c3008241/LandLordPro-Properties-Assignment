@@ -1,11 +1,9 @@
 
-
-
-
-
 <?php
 include 'connect.php';
 session_start();
+// $conn = connectDB();
+
 
 $user_id = $_SESSION['user_id'];
 if (!isset($user_id)) {
@@ -30,6 +28,8 @@ if ($result->num_rows > 0) {
   $user_type = $row['user_type'];
   $fullName = $row['fullName'];
   $email = $row['email'];
+  $userType = $row['user_type'];
+
 }
 
 ?>
@@ -63,35 +63,29 @@ if ($result->num_rows > 0) {
 </header>
 
 <nav class="navBar">
-  <ul>
-    <?php 
-if(!$user_id){
-    echo '<li><a href="logIn.php">LOG IN |</a></li>
-    <li><a href="signUp.php">SIGN UP |</a></li>';
-}
-else if($user_id){
-    echo '
-    <li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
-    <li><a href="properties.php">PROPERTIES |</a></li>
-';
-}
-?>   
-    <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
-    <li><a href="contactUs.php">CONTACT US |</a></li>
+    <ul>
+    <?php if($userType === 'landlord'): ?>
+            <li><a href="landlord_applications.php" style="color:#4CAF50;font-weight:bold;">VIEW APPLICATIONS |</a></li>
+        <?php endif; ?>
 
-  <?php 
+        <?php 
+      if($user_id){
+        echo'  <li><a href="accountBalance.php">ACCOUNT BALANCE |</a></li>
+      <li><a href="properties.php">PROPERTIES |</a></li>';
+      }
+        ?>
+      <li><a href="faqGuidelines.php">FAQ SUMMARY |</a></li>
+      <li><a href="contactUs.php">CONTACT US |</a></li>
 
-  if($user_id){
-    echo '<li><a href="logOut.php">LOG OUT</a></li>';
-  }
-  
-  ?>
-
-
-
-  </ul>
-</nav>
-
+      <?php 
+      if($user_id){
+        echo'<li><a href="logOut.php">LOG OUT</a></li>';
+      }
+        ?>
+      
+    </ul>
+    
+  </nav>
 
 <main>
 
@@ -123,22 +117,19 @@ echo '£'. $balance;
     <h1>Make A Payment</h1>
   </div>
 
-  <form action="sendToLandlord.php" method="post" >
-    
-  <label for="email">Reciever Email:</label>
-  <input type="email" name="email">
+  <form action="sendToLandlord.php" method="post">
+    <label for="email">Receiver Email:</label>
+    <input type="email" name="receiverEmail" required>
 
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" min="0.01" step="0.01" required>
 
-  <label for="amount">Amount:</label>
-  <input type="number" name= "amount" value="amount">
-
-  <input  type="submit" class= "logIn" name="sendMoney" value="Send">
-
+    <input type="submit" class="logIn" name="sendMoney" value="Send">
   </form>
 
-  <button class= "logIn"  onclick="backToAccount()"  id="back" >Back</button>
-  
+  <button class="logIn" onclick="backToAccount()" id="back">Back</button>
 </div>
+
 
 
 

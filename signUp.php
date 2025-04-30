@@ -73,6 +73,11 @@
   <input type="password" name="password" placeholder="zylithwann34">
 </div>
 
+<div>
+  <label for="ConfirmPassword">Confirm Password:</label>
+  <input type="password" name="confirmPassword" placeholder="zylithwann34">
+</div>
+
 <input type="submit" name="signUp" value="Register" class="logIn">
 
 </div>

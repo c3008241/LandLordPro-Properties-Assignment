@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connect.php';
+// $conn = connectDB();
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: logIn.php");
