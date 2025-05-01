@@ -10,6 +10,10 @@ ACCOUNT 1
 Email: jalalahsaleh@gmail.com
 Password: jalalah 
 
+ACCOUNT 2
+Email: ray@gmail.com
+Password:ray
+
 
 ACCOUNT 3
 Email: syafiq@gmail.com
